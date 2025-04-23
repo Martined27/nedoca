@@ -110,37 +110,66 @@
             color: #004d7a;
         }
         
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-            
-            .promo-image {
-                display: none;
-            }
-            
-            .promo-title {
-                display: block;
-            }
-            
-            .whatsapp-btn {
-                padding: 12px 25px;
-                font-size: 16px;
-                width: 80%;
-                max-width: 300px;
-            }
-        }
+        .mobile-promo-image {
+    display: none; /* Oculto por defecto, visible solo en móvil */
+    width: 100%;
+    max-width: 100%;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        margin: 10px;
+        padding-bottom: 60px; /* Espacio para el botón flotante */
+    }
+    
+    .logo {
+        max-width: 240px;
+    }
+    
+    .promo-image {
+        display: none;
+    }
+    
+    .mobile-promo-image {
+        display: block; 
+    }
+    
+    .promo-title {
+        display: none; 
+    }
+    
+    /* Estilo para el botón flotante en móvil */
+    .whatsapp-btn {
+        position: fixed;
+        bottom: 325px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 12px 25px;
+        font-size: 16px;
+        width: 80%;
+        max-width: 300px;
+        z-index: 100; 
+    }
+    
+    .whatsapp-btn:hover {
+        transform: translateX(-50%) translateY(-3px); /* Mantener centrado al hacer hover */
+    }
+}
     </style>
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <img src="/assets/nedoca_logo_short.png" alt="Nedoca Logo" class="logo">
+            <!-- <img src="/assets/nedoca_logo_short.png" alt="Nedoca Logo" class="logo"> -->
         </header>
         
         <main>
             <img src="/assets/center-nedoca.png" alt="Nedoca - Una Cocina para toda la VIDA" class="promo-image">
-            
+            <img src="/assets/nedoca_mobile.png" alt="Participa y Gana Una Cocina para toda la VIDA" class="mobile-promo-image">
             <div class="promo-title">
                 Participa y Gana<br>
                 Una Cocina para Toda la Vida

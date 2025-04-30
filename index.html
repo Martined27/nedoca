@@ -18,12 +18,17 @@
         }
 
         body {
-           
-            background-image: url('/assets/Fondo.png');
+            background-image: url('/assets/optimized/Fondo.webp');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             min-height: 100vh;
+        }
+
+        @supports not (background-image: url('/assets/optimized/Fondo.webp')) {
+            body {
+                background-image: url('/assets/Fondo.png');
+            }
         }
 
         .container {

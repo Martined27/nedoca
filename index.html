@@ -32,7 +32,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
             text-align: center;
@@ -70,6 +70,7 @@
 
         .cta-container {
             margin: 40px 0;
+            display: none;
         }
 
         .whatsapp-btn {
@@ -125,89 +126,161 @@
 
         .registration-form {
             background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 8px;
+            padding: 40px;
+            border-radius: 12px;
             margin: 30px auto;
-            max-width: 600px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
         }
 
         .registration-form h2 {
             color: #0066a4;
-            margin-bottom: 20px;
+            margin-bottom: 35px;
             text-align: center;
+            font-size: 36px;
+            font-weight: 500;
+            letter-spacing: 0.25px;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 10px;
+            color: #212121;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: left;
+            letter-spacing: 0.15px;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            text-align: left;
         }
 
         .form-group input,
         .form-group select {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
             font-size: 16px;
+            background-color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #0066a4;
+            box-shadow: 0 0 0 2px rgba(0, 102, 164, 0.2);
+        }
+
+        .form-group input::placeholder {
+            color: #9e9e9e;
+            font-size: 14px;
         }
 
         .form-group select {
-            background-color: white;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 15px;
+            padding-right: 45px;
             cursor: pointer;
-        }
-
-        .required-fields {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 20px;
-            text-align: right;
         }
 
         .file-label {
             display: block;
-            margin-bottom: 8px;
-            color: #666;
+            margin-bottom: 10px;
+            color: #212121;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: left;
+            letter-spacing: 0.15px;
         }
 
         .file-label::after {
             content: " *";
-            color: #ff0000;
-        }
-
-        .file-label:not([for="cocinaImage"])::after {
-            content: " *";
-            color: #ff0000;
+            color: #f44336;
         }
 
         .file-label[for="cocinaImage"]::after {
             content: " (opcional)";
-            color: #666;
+            color: #757575;
+        }
+
+        .form-group input[type="file"] {
+            padding: 10px;
+            background-color: #f5f5f5;
+            border: 2px dashed #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input[type="file"]:hover {
+            border-color: #0066a4;
+            background-color: #f0f7ff;
+        }
+
+        .required-fields {
+            color: #757575;
+            font-size: 14px;
+            margin: 20px 0;
+            text-align: right;
         }
 
         .submit-btn {
             background-color: #0066a4;
             color: white;
-            padding: 15px 30px;
+            padding: 16px 32px;
             border: none;
-            border-radius: 30px;
+            border-radius: 8px;
             font-size: 18px;
-            font-weight: bold;
+            font-weight: 500;
             cursor: pointer;
             width: 100%;
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 6px rgba(0, 102, 164, 0.2);
         }
 
         .submit-btn:hover {
             background-color: #004d7a;
             transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 102, 164, 0.3);
+        }
+
+        .submit-btn:disabled {
+            background-color: #bdbdbd;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
                 margin: 10px;
-                padding-bottom: 60px;
-                position: relative;
+            }
+
+            .registration-form {
+                padding: 20px;
+                margin: 20px auto;
+            }
+
+            .registration-form h2 {
+                font-size: 24px;
+            }
+
+            .form-group input,
+            .form-group select {
+                padding: 12px;
+                font-size: 15px;
             }
 
             .logo {
@@ -264,26 +337,25 @@
             <form id="registrationForm" class="registration-form">
                 <h2>Formulario de Registro</h2>
                 <div class="form-group">
-                    <input type="text" id="nombre" name="nombre" required placeholder="Nombre completo *">
+                    <label for="nombre" class="input-label">Nombre Completo</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Ingresa tu nombre completo">
                 </div>
                 <div class="form-group">
-                    <input type="text" id="cedula" name="cedula" required placeholder="Cédula *">
+                    <label for="cedula" class="input-label">Cédula</label>
+                    <input type="text" id="cedula" name="cedula" required placeholder="Ingresa tu número de cédula (11 dígitos)">
                 </div>
                 <div class="form-group">
-                    <input type="tel" id="telefono" name="telefono" required placeholder="Teléfono *">
+                    <label for="telefono" class="input-label">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" required placeholder="Ingresa tu número de teléfono">
                 </div>
                 <div class="form-group">
-                    <input type="email" id="email" name="email" placeholder="Correo electrónico">
+                    <label for="comprobante" class="input-label">Número de Comprobante Fiscal</label>
+                    <input type="text" id="comprobante" name="comprobante" required placeholder="Ingresa el número de comprobante fiscal (e-CF, NFC, etc.)">
                 </div>
                 <div class="form-group">
-                    <input type="text" id="factura" name="factura" placeholder="Número de factura">
-                </div>
-                <div class="form-group">
-                    <input type="text" id="comprobante" name="comprobante" placeholder="Número de comprobante (NFC, e-CF, ...)">
-                </div>
-                <div class="form-group">
-                    <select id="zona" name="zona" required>
-                        <option value="">Seleccione su zona *</option>
+                    <label for="region" class="input-label">Región</label>
+                    <select id="region" name="region" required>
+                        <option value="">Selecciona tu región</option>
                         <option value="Norte">Norte</option>
                         <option value="Sur">Sur</option>
                         <option value="Este">Este</option>
@@ -291,15 +363,15 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="facturaImage" class="file-label">Subir imagen de la factura *</label>
+                    <label for="facturaImage" class="file-label">Imagen de la Factura</label>
                     <input type="file" id="facturaImage" name="facturaImage" accept="image/*" required>
                 </div>
                 <div class="form-group">
-                    <label for="cocinaImage" class="file-label">Subir imagen de tu cocina (opcional)</label>
+                    <label for="cocinaImage" class="file-label">Imagen de tu Cocina</label>
                     <input type="file" id="cocinaImage" name="cocinaImage" accept="image/*">
                 </div>
                 <p class="required-fields">* Campos obligatorios</p>
-                <button type="submit" class="submit-btn">Registrar</button>
+                <button type="submit" class="submit-btn">Enviar y Participar</button>
             </form>
 
             <div class="cta-container">
@@ -322,11 +394,87 @@
         </footer>
     </div>
     <script>
+        // Luhn algorithm for cédula validation
+        function validateCedula(cedula) {
+            // Remove any non-digit characters
+            cedula = cedula.replace(/\D/g, '');
+            
+            // Check if it's 11 digits
+            if (cedula.length !== 11) return false;
+            
+            // Check if it's all the same digit
+            if (/^(\d)\1{10}$/.test(cedula)) return false;
+            
+            // Luhn algorithm
+            let sum = 0;
+            for (let i = 0; i < 10; i++) {
+                let digit = parseInt(cedula[i]);
+                if (i % 2 === 1) {
+                    digit *= 2;
+                    if (digit > 9) digit -= 9;
+                }
+                sum += digit;
+            }
+            
+            const checkDigit = (10 - (sum % 10)) % 10;
+            return checkDigit === parseInt(cedula[10]);
+        }
+
+        // Phone number validation
+        function validatePhone(phone) {
+            // Remove any non-digit characters
+            phone = phone.replace(/\D/g, '');
+            // Check if it's between 10 and 15 digits
+            return phone.length >= 10 && phone.length <= 15;
+        }
+
+        // Image validation
+        function validateImage(file) {
+            const validTypes = [
+                'image/jpeg',
+                'image/jpg',
+                'image/png',
+                'image/heic',
+                'image/heif',
+                'image/webp'
+            ];
+            return validTypes.includes(file.type);
+        }
+
         document.getElementById('registrationForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const formData = new FormData(this);
             const submitBtn = this.querySelector('.submit-btn');
+            const cedula = formData.get('cedula');
+            const telefono = formData.get('telefono');
+            const facturaImage = formData.get('facturaImage');
+            const cocinaImage = formData.get('cocinaImage');
+
+            // Validate cédula
+            if (!validateCedula(cedula)) {
+                alert('Por favor, ingrese una cédula válida.');
+                return;
+            }
+
+            // Validate phone
+            if (!validatePhone(telefono)) {
+                alert('Por favor, ingrese un número de teléfono válido (10-15 dígitos).');
+                return;
+            }
+
+            // Validate factura image
+            if (facturaImage.size > 0 && !validateImage(facturaImage)) {
+                alert('Por favor, seleccione una imagen válida para la factura (JPG, PNG, HEIC, HEIF, WEBP).');
+                return;
+            }
+
+            // Validate cocina image if provided
+            if (cocinaImage.size > 0 && !validateImage(cocinaImage)) {
+                alert('Por favor, seleccione una imagen válida para la cocina (JPG, PNG, HEIC, HEIF, WEBP).');
+                return;
+            }
+
             submitBtn.disabled = true;
             submitBtn.textContent = 'Enviando...';
 
@@ -363,12 +511,18 @@
                 alert('Hubo un error al enviar el formulario. Por favor, intente nuevamente.');
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Registrar';
+                submitBtn.textContent = 'Enviar y Participar';
             }
         });
 
+        // Add input validation for phone number
+        document.getElementById('telefono').addEventListener('input', function(e) {
+            // Remove any non-digit characters
+            this.value = this.value.replace(/\D/g, '');
+        });
+
         async function submitToGoogleSheets(data) {
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbz-Z3wPkSC7tGx6kwXH0Px1o_6tVidO3GoA2PaYAYKktVcz4kPE5c54U5Leuv9JvWo17w/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbygEv2B-qpjIfjRW65cIJ5Wi70ef88Jj29mgOM_CeHSmhFNZNDNlmTeUhNtdEJDSBNiuw/exec'
             try {
                 const response = await fetch(scriptURL, {
                     method: 'POST',

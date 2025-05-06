@@ -41,7 +41,7 @@
         }
 
         .header {
-            padding: 20px 0;
+            padding: 5px 0;
         }
 
         .logo {
@@ -52,7 +52,7 @@
         .promo-image {
             width: 100%;
             max-width: 800px;
-            margin: 20px auto;
+            margin: 10px auto;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: block;
@@ -84,6 +84,10 @@
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
+            margin: 20px auto;
+            text-align: center;
+            max-width: 300px;
+            width: 100%;
         }
 
         .whatsapp-btn:hover {
@@ -95,6 +99,25 @@
         .whatsapp-icon {
             margin-right: 10px;
             vertical-align: middle;
+        }
+
+        .form-hint {
+            color: #666;
+            font-size: 14px;
+            margin: 5px auto 20px;
+            text-align: center;
+            max-width: 300px;
+            line-height: 1.4;
+        }
+
+        .form-hint a {
+            color: #0066a4;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .form-hint a:hover {
+            text-decoration: underline;
         }
 
         .footer {
@@ -321,7 +344,11 @@
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
-                margin: 10px;
+                margin: 0;
+            }
+
+            .header {
+                padding: 10px 0;
             }
 
             .registration-form {
@@ -351,24 +378,13 @@
                 display: block;
                 width: 100%;
                 max-width: 100%;
-                margin: 20px auto;
+                margin: 0;
             }
 
             .whatsapp-btn {
-                position: absolute;
-                bottom: 325px;
-                left: 50%;
-                transform: translateX(-50%);
-                padding: 12px 25px;
                 font-size: 16px;
-                width: 80%;
-                max-width: 300px;
-                z-index: 100;
-            }
-
-            .whatsapp-btn:hover {
-                transform: translateX(-50%) translateY(-3px);
-               
+                padding: 12px 25px;
+                margin: 10px auto;
             }
 
             .social-buttons {
@@ -400,6 +416,16 @@
 
             <img src="/assets/optimized/nedoca_mobile.webp" alt="Nedoca - Una Cocina para toda la VIDA"
                 class="mobile-promo-image" loading="lazy">
+
+            <a href="#" class="whatsapp-btn" onclick="return false;">
+                <svg class="whatsapp-icon" width="24" height="24" viewBox="0 0 24 24" fill="white"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M20.4 3.6C18.2 1.3 15.2 0 12 0C5.5 0 0.1 5.4 0.1 11.9C0.1 14 0.8 16.1 1.9 17.8L0 24L6.3 22.1C8 23.1 9.9 23.7 12 23.7C18.5 23.7 24 18.3 24 11.8C24 8.6 22.7 5.9 20.4 3.6ZM12 21.7C10.2 21.7 8.4 21.2 6.8 20.2L6.5 20L2.8 21.1L3.9 17.5L3.7 17.2C2.6 15.5 2.1 13.7 2.1 11.9C2.1 6.5 6.6 2 12 2C14.7 2 17.2 3.1 19.1 5C21 6.9 22.1 9.4 22.1 11.9C22 17.2 17.4 21.7 12 21.7ZM17.4 14.4C17.1 14.2 15.6 13.5 15.3 13.4C15 13.3 14.8 13.2 14.6 13.5C14.4 13.8 13.8 14.5 13.6 14.7C13.4 14.9 13.2 15 12.9 14.8C11.3 14 10.3 13.4 9.2 11.6C8.9 11.1 9.5 11.1 10 10.1C10.1 9.9 10 9.7 9.9 9.5C9.8 9.3 9.3 7.8 9 7.2C8.8 6.6 8.5 6.7 8.3 6.7C8.1 6.7 7.9 6.7 7.7 6.7C7.5 6.7 7.1 6.8 6.8 7.1C6.5 7.4 5.7 8.1 5.7 9.6C5.7 11.1 6.8 12.5 6.9 12.7C7.1 12.9 9.2 16.2 12.4 17.5C14.4 18.4 15.1 18.4 16 18.3C16.6 18.2 17.8 17.6 18.1 16.9C18.4 16.2 18.4 15.6 18.3 15.5C18.2 15.3 18 15.2 17.4 14.4Z" />
+                </svg>
+                ¡Regístrate Aquí!
+            </a>
+            <p class="form-hint">O si prefieres, puedes <a href="#registrationForm">completar el formulario</a> que encontrarás más abajo</p>
 
             <form id="registrationForm" class="registration-form">
                 <h2>Formulario de Registro</h2>
@@ -446,7 +472,7 @@
                     <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                     </svg>
-                    @nedocarepdom
+                    Nedoca
                 </a>
                 <a href="https://www.facebook.com/Nedoca-100085374285877/" target="_blank" class="social-btn facebook-btn">
                     <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -457,14 +483,6 @@
             </div>
 
             <div class="cta-container">
-                <a href="https://wa.me/+18292574817" class="whatsapp-btn">
-                    <svg class="whatsapp-icon" width="24" height="24" viewBox="0 0 24 24" fill="white"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M20.4 3.6C18.2 1.3 15.2 0 12 0C5.5 0 0.1 5.4 0.1 11.9C0.1 14 0.8 16.1 1.9 17.8L0 24L6.3 22.1C8 23.1 9.9 23.7 12 23.7C18.5 23.7 24 18.3 24 11.8C24 8.6 22.7 5.9 20.4 3.6ZM12 21.7C10.2 21.7 8.4 21.2 6.8 20.2L6.5 20L2.8 21.1L3.9 17.5L3.7 17.2C2.6 15.5 2.1 13.7 2.1 11.9C2.1 6.5 6.6 2 12 2C14.7 2 17.2 3.1 19.1 5C21 6.9 22.1 9.4 22.1 11.9C22 17.2 17.4 21.7 12 21.7ZM17.4 14.4C17.1 14.2 15.6 13.5 15.3 13.4C15 13.3 14.8 13.2 14.6 13.5C14.4 13.8 13.8 14.5 13.6 14.7C13.4 14.9 13.2 15 12.9 14.8C11.3 14 10.3 13.4 9.2 11.6C8.9 11.1 9.5 11.1 10 10.1C10.1 9.9 10 9.7 9.9 9.5C9.8 9.3 9.3 7.8 9 7.2C8.8 6.6 8.5 6.7 8.3 6.7C8.1 6.7 7.9 6.7 7.7 6.7C7.5 6.7 7.1 6.8 6.8 7.1C6.5 7.4 5.7 8.1 5.7 9.6C5.7 11.1 6.8 12.5 6.9 12.7C7.1 12.9 9.2 16.2 12.4 17.5C14.4 18.4 15.1 18.4 16 18.3C16.6 18.2 17.8 17.6 18.1 16.9C18.4 16.2 18.4 15.6 18.3 15.5C18.2 15.3 18 15.2 17.4 14.4Z" />
-                    </svg>
-                    ¡Regístrate Aquí!
-                </a>
             </div>
         </main>
 

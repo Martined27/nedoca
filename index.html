@@ -123,6 +123,85 @@
             height: auto;
         }
 
+        .registration-form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px auto;
+            max-width: 600px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .registration-form h2 {
+            color: #0066a4;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-group select {
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .required-fields {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .file-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        .file-label::after {
+            content: " *";
+            color: #ff0000;
+        }
+
+        .file-label:not([for="cocinaImage"])::after {
+            content: " *";
+            color: #ff0000;
+        }
+
+        .file-label[for="cocinaImage"]::after {
+            content: " (opcional)";
+            color: #666;
+        }
+
+        .submit-btn {
+            background-color: #0066a4;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #004d7a;
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -182,6 +261,47 @@
             <img src="/assets/optimized/nedoca_mobile.webp" alt="Nedoca - Una Cocina para toda la VIDA"
                 class="mobile-promo-image" loading="lazy">
 
+            <form id="registrationForm" class="registration-form">
+                <h2>Formulario de Registro</h2>
+                <div class="form-group">
+                    <input type="text" id="nombre" name="nombre" required placeholder="Nombre completo *">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="cedula" name="cedula" required placeholder="Cédula *">
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="telefono" name="telefono" required placeholder="Teléfono *">
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Correo electrónico">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="factura" name="factura" placeholder="Número de factura">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="comprobante" name="comprobante" placeholder="Número de comprobante (NFC, e-CF, ...)">
+                </div>
+                <div class="form-group">
+                    <select id="zona" name="zona" required>
+                        <option value="">Seleccione su zona *</option>
+                        <option value="Norte">Norte</option>
+                        <option value="Sur">Sur</option>
+                        <option value="Este">Este</option>
+                        <option value="Santo Domingo">Santo Domingo</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="facturaImage" class="file-label">Subir imagen de la factura *</label>
+                    <input type="file" id="facturaImage" name="facturaImage" accept="image/*" required>
+                </div>
+                <div class="form-group">
+                    <label for="cocinaImage" class="file-label">Subir imagen de tu cocina (opcional)</label>
+                    <input type="file" id="cocinaImage" name="cocinaImage" accept="image/*">
+                </div>
+                <p class="required-fields">* Campos obligatorios</p>
+                <button type="submit" class="submit-btn">Registrar</button>
+            </form>
+
             <div class="cta-container">
                 <a href="https://wa.me/+18292574817" class="whatsapp-btn">
                     <svg class="whatsapp-icon" width="24" height="24" viewBox="0 0 24 24" fill="white"
@@ -201,6 +321,72 @@
                     class="terms-link" target="_blank" rel="noopener noreferrer">Ver términos y condiciones</a></p>
         </footer>
     </div>
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const submitBtn = this.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+
+            try {
+                // Convert the form data to a JSON object
+                const formObject = {};
+                const filePromises = [];
+
+                formData.forEach((value, key) => {
+                    if (key === 'facturaImage' || key === 'cocinaImage') {
+                        // Handle file uploads
+                        if (value.size > 0) { // Only process if a file was selected
+                            const file = value;
+                            const reader = new FileReader();
+                            const promise = new Promise((resolve) => {
+                                reader.onload = function(e) {
+                                    formObject[key] = e.target.result;
+                                    resolve();
+                                };
+                                reader.readAsDataURL(file);
+                            });
+                            filePromises.push(promise);
+                        }
+                    } else {
+                        formObject[key] = value;
+                    }
+                });
+
+                // Wait for all file uploads to complete
+                await Promise.all(filePromises);
+                await submitToGoogleSheets(formObject);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Hubo un error al enviar el formulario. Por favor, intente nuevamente.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Registrar';
+            }
+        });
+
+        async function submitToGoogleSheets(data) {
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbz-Z3wPkSC7tGx6kwXH0Px1o_6tVidO3GoA2PaYAYKktVcz4kPE5c54U5Leuv9JvWo17w/exec';
+            try {
+                const response = await fetch(scriptURL, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    mode: 'no-cors'
+                });
+
+                alert('¡Registro exitoso! Gracias por participar.');
+                document.getElementById('registrationForm').reset();
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Hubo un error al enviar el formulario. Por favor, intente nuevamente.');
+            }
+        }
+    </script>
 </body>
 
 </html>

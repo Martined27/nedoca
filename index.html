@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/assets/nedoca_logo_short.png">
+    <link rel="apple-touch-icon" href="/assets/nedoca_logo_short.png">
     <style>
         * {
             margin: 0;
@@ -75,30 +77,50 @@
 
         .whatsapp-btn {
             display: inline-block;
-            background-color: #25D366;
+            background: linear-gradient(145deg, #25D366, #128C7E);
             color: white;
-            font-size: 18px;
-            font-weight: bold;
-            padding: 15px 30px;
-            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 25px;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
-            margin: 20px auto;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3),
+                        inset 0 1px 1px rgba(255, 255, 255, 0.2);
+            margin: 10px auto;
             text-align: center;
-            max-width: 300px;
+            max-width: 250px;
             width: 100%;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
         }
 
         .whatsapp-btn:hover {
-            background-color: #128C7E;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(37, 211, 102, 0.4);
+            background: linear-gradient(145deg, #128C7E, #075E54);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4),
+                        inset 0 1px 1px rgba(255, 255, 255, 0.2);
         }
 
-        .whatsapp-icon {
-            margin-right: 10px;
-            vertical-align: middle;
+        .whatsapp-btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 10px rgba(37, 211, 102, 0.3),
+                        inset 0 1px 1px rgba(255, 255, 255, 0.2);
+        }
+
+        .whatsapp-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            border-radius: 25px;
         }
 
         .form-hint {
@@ -417,15 +439,11 @@
             <img src="/assets/optimized/nedoca_mobile.webp" alt="Nedoca - Una Cocina para toda la VIDA"
                 class="mobile-promo-image" loading="lazy">
 
-            <a href="#" class="whatsapp-btn" onclick="return false;">
-                <svg class="whatsapp-icon" width="24" height="24" viewBox="0 0 24 24" fill="white"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M20.4 3.6C18.2 1.3 15.2 0 12 0C5.5 0 0.1 5.4 0.1 11.9C0.1 14 0.8 16.1 1.9 17.8L0 24L6.3 22.1C8 23.1 9.9 23.7 12 23.7C18.5 23.7 24 18.3 24 11.8C24 8.6 22.7 5.9 20.4 3.6ZM12 21.7C10.2 21.7 8.4 21.2 6.8 20.2L6.5 20L2.8 21.1L3.9 17.5L3.7 17.2C2.6 15.5 2.1 13.7 2.1 11.9C2.1 6.5 6.6 2 12 2C14.7 2 17.2 3.1 19.1 5C21 6.9 22.1 9.4 22.1 11.9C22 17.2 17.4 21.7 12 21.7ZM17.4 14.4C17.1 14.2 15.6 13.5 15.3 13.4C15 13.3 14.8 13.2 14.6 13.5C14.4 13.8 13.8 14.5 13.6 14.7C13.4 14.9 13.2 15 12.9 14.8C11.3 14 10.3 13.4 9.2 11.6C8.9 11.1 9.5 11.1 10 10.1C10.1 9.9 10 9.7 9.9 9.5C9.8 9.3 9.3 7.8 9 7.2C8.8 6.6 8.5 6.7 8.3 6.7C8.1 6.7 7.9 6.7 7.7 6.7C7.5 6.7 7.1 6.8 6.8 7.1C6.5 7.4 5.7 8.1 5.7 9.6C5.7 11.1 6.8 12.5 6.9 12.7C7.1 12.9 9.2 16.2 12.4 17.5C14.4 18.4 15.1 18.4 16 18.3C16.6 18.2 17.8 17.6 18.1 16.9C18.4 16.2 18.4 15.6 18.3 15.5C18.2 15.3 18 15.2 17.4 14.4Z" />
-                </svg>
+            <a href="#registrationForm" class="whatsapp-btn">
                 ¡Regístrate Aquí!
             </a>
-            <p class="form-hint">O si prefieres, puedes <a href="#registrationForm">completar el formulario</a> que encontrarás más abajo</p>
+            <p class="form-hint">O si prefieres, puedes <a href="#registrationForm">completar el formulario</a> que
+                encontrarás más abajo</p>
 
             <form id="registrationForm" class="registration-form">
                 <h2>Formulario de Registro</h2>
@@ -435,15 +453,18 @@
                 </div>
                 <div class="form-group">
                     <label for="cedula" class="input-label">Cédula</label>
-                    <input type="text" id="cedula" name="cedula" required placeholder="Ingresa tu número de cédula (11 dígitos)">
+                    <input type="text" id="cedula" name="cedula" required
+                        placeholder="Ingresa tu número de cédula (11 dígitos)">
                 </div>
                 <div class="form-group">
                     <label for="telefono" class="input-label">Teléfono</label>
-                    <input type="tel" id="telefono" name="telefono" required placeholder="Ingresa tu número de teléfono">
+                    <input type="tel" id="telefono" name="telefono" required
+                        placeholder="Ingresa tu número de teléfono">
                 </div>
                 <div class="form-group">
                     <label for="comprobante" class="input-label">Número de Comprobante Fiscal</label>
-                    <input type="text" id="comprobante" name="comprobante" required placeholder="Ingresa el NCF ó e-NCF de tu factura">
+                    <input type="text" id="comprobante" name="comprobante" required
+                        placeholder="Ingresa el NCF ó e-NCF de tu factura">
                 </div>
                 <div class="form-group">
                     <label for="region" class="input-label">Región</label>
@@ -470,13 +491,16 @@
             <div class="social-buttons">
                 <a href="https://www.instagram.com/nedocarepdom" target="_blank" class="social-btn instagram-btn">
                     <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                     </svg>
                     Nedoca
                 </a>
-                <a href="https://www.facebook.com/Nedoca-100085374285877/" target="_blank" class="social-btn facebook-btn">
+                <a href="https://www.facebook.com/Nedoca-100085374285877/" target="_blank"
+                    class="social-btn facebook-btn">
                     <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        <path
+                            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                     </svg>
                     Nedoca
                 </a>
@@ -498,13 +522,13 @@
         function validateCedula(cedula) {
             // Remove any non-digit characters
             cedula = cedula.replace(/\D/g, '');
-            
+
             // Check if it's 11 digits
             if (cedula.length !== 11) return false;
-            
+
             // Check if it's all the same digit
             if (/^(\d)\1{10}$/.test(cedula)) return false;
-            
+
             // Luhn algorithm
             let sum = 0;
             for (let i = 0; i < 10; i++) {
@@ -515,7 +539,7 @@
                 }
                 sum += digit;
             }
-            
+
             const checkDigit = (10 - (sum % 10)) % 10;
             return checkDigit === parseInt(cedula[10]);
         }
@@ -541,9 +565,9 @@
             return validTypes.includes(file.type);
         }
 
-        document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+        document.getElementById('registrationForm').addEventListener('submit', async function (e) {
             e.preventDefault();
-            
+
             const formData = new FormData(this);
             const submitBtn = this.querySelector('.submit-btn');
             const cedula = formData.get('cedula');
@@ -590,7 +614,7 @@
                             const file = value;
                             const reader = new FileReader();
                             const promise = new Promise((resolve) => {
-                                reader.onload = function(e) {
+                                reader.onload = function (e) {
                                     formObject[key] = e.target.result;
                                     resolve();
                                 };
@@ -616,7 +640,7 @@
         });
 
         // Add input validation for phone number
-        document.getElementById('telefono').addEventListener('input', function(e) {
+        document.getElementById('telefono').addEventListener('input', function (e) {
             // Remove any non-digit characters
             this.value = this.value.replace(/\D/g, '');
         });

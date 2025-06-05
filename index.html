@@ -170,12 +170,32 @@
         }
 
         .registration-form {
+            display: none; /* Hide the form */
+        }
+
+        .winners-message {
             background: rgba(255, 255, 255, 0.95);
             padding: 40px;
             border-radius: 12px;
             margin: 30px auto;
             max-width: 800px;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .winners-message h2 {
+            color: #0066a4;
+            margin-bottom: 20px;
+            font-size: 36px;
+            font-weight: 500;
+            letter-spacing: 0.25px;
+        }
+
+        .winners-message p {
+            color: #333;
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
 
         .registration-form h2 {
@@ -444,6 +464,11 @@
             </a>
             <p class="form-hint">O si prefieres, puedes <a href="#registrationForm">completar el formulario</a> que
                 encontrarás más abajo</p>
+
+            <div class="winners-message">
+                <h2>¡Gracias por tu participación!</h2>
+                <p>Espera próximamente por los ganadores</p>
+            </div>
 
             <form id="registrationForm" class="registration-form">
                 <h2>Formulario de Registro</h2>
